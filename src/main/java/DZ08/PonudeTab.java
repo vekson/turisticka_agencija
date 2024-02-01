@@ -1,4 +1,4 @@
-package cs202.turagencija.tabs;
+package app.tabs;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;

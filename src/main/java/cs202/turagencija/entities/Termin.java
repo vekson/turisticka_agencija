@@ -5,23 +5,23 @@ import java.util.*;
 
 public class Termin {
 
-    public Integer id;
-    public LocalDate datumPolaska;
-    public LocalDate datumOdlaska;
-    public Integer brojSlobodnihMesta;
-    public List<Korisnik> korisnikList;
-    public Arazman arazman;
+    private Integer id;
+    private LocalDate datumPolaska;
+    private LocalDate datumOdlaska;
+    private Integer brojSlobodnihMesta;
+    private List<Korisnik> korisnikList;
+    private Aranzman aranzman;
 
     public Termin() {
     }
 
-    public Termin(Integer id, LocalDate datumPolaska, LocalDate datumOdlaska, Integer brojSlobodnihMesta, List<Korisnik> korisnikList, Arazman arazman) {
+    public Termin(Integer id, LocalDate datumPolaska, LocalDate datumOdlaska, Integer brojSlobodnihMesta, List<Korisnik> korisnikList, Aranzman aranzman) {
         this.id = id;
         this.datumPolaska = datumPolaska;
         this.datumOdlaska = datumOdlaska;
         this.brojSlobodnihMesta = brojSlobodnihMesta;
         this.korisnikList = korisnikList;
-        this.arazman = arazman;
+        this.aranzman = aranzman;
     }
 
     public Integer getId() {
@@ -64,17 +64,17 @@ public class Termin {
         this.korisnikList = korisnikList;
     }
 
-    public Arazman getArazman() {
-        return arazman;
+    public Aranzman getAranzman() {
+        return aranzman;
     }
 
-    public void setArazman(Arazman arazman) {
-        this.arazman = arazman;
+    public void setAranzman(Aranzman aranzman) {
+        this.aranzman = aranzman;
     }
 
     @Override
     public String toString() {
-        return "Termin{" + "id=" + id + ", datumPolaska=" + datumPolaska + ", datumOdlaska=" + datumOdlaska + ", brojSlobodnihMesta=" + brojSlobodnihMesta + ", korisnikList=" + korisnikList + ", arazman=" + arazman + '}';
+        return "Termin{" + "id=" + id + ", datumPolaska=" + datumPolaska + ", datumOdlaska=" + datumOdlaska + ", brojSlobodnihMesta=" + brojSlobodnihMesta + ", korisnikList=" + korisnikList + ", aranzman=" + aranzman + '}';
     }
 
 }

@@ -3,23 +3,23 @@ package cs202.turagencija.entities;
 
 public class Vodic {
 
-    public Integer id;
-    public String ime;
-    public String prezime;
-    public Integer starost;
-    public Integer godineRada;
-    public Arazman arazman;
+    private Integer id;
+    private String ime;
+    private String prezime;
+    private Integer starost;
+    private Integer godineRada;
+    private Aranzman aranzman;
 
     public Vodic() {
     }
 
-    public Vodic(Integer id, String ime, String prezime, Integer starost, Integer godineRada, Arazman arazman) {
+    public Vodic(Integer id, String ime, String prezime, Integer starost, Integer godineRada, Aranzman aranzman) {
         this.id = id;
         this.ime = ime;
         this.prezime = prezime;
         this.starost = starost;
         this.godineRada = godineRada;
-        this.arazman = arazman;
+        this.aranzman = aranzman;
     }
 
     public Integer getId() {
@@ -62,17 +62,17 @@ public class Vodic {
         this.godineRada = godineRada;
     }
 
-    public Arazman getArazman() {
-        return arazman;
+    public Aranzman getAranzman() {
+        return aranzman;
     }
 
-    public void setArazman(Arazman arazman) {
-        this.arazman = arazman;
+    public void setAranzman(Aranzman aranzman) {
+        this.aranzman = aranzman;
     }
 
     @Override
     public String toString() {
-        return "Vodic{" + "id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", starost=" + starost + ", godineRada=" + godineRada + ", arazman=" + arazman + '}';
+        return "Vodic{" + "id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", starost=" + starost + ", godineRada=" + godineRada + ", aranzman=" + aranzman + '}';
     }
 
 }

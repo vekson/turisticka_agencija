@@ -1,13 +1,7 @@
-app\tabs\PonudeTab.class
-app\tabs\components\HotelPane.class
-app\tabs\PrognozaTab.class
-app\tabs\RezervacijeTab.class
-cs202\turagencija\entities\Korisnik.class
 cs202\turagencija\entities\Agencija.class
-app\tabs\components\PonudaPane.class
 cs202\turagencija\scenes\StartScene.class
 module-info.class
 cs202\turagencija\db\DBUtil.class
-app\tabs\HoteliTab.class
-app\tabs\ProfilTab.class
+app\tabs\PonudeTab.class
+cs202\turagencija\entities\Korisnik.class
 cs202\turagencija\App.class

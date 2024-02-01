@@ -1,4 +1,4 @@
-package app.tabs.components;
+package cs202.turagencija.tabs.components;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;

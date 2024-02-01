@@ -5,11 +5,7 @@
  */
 package cs202.turagencija.scenes;
 
-import app.tabs.HoteliTab;
-import app.tabs.PonudeTab;
-import app.tabs.ProfilTab;
-import app.tabs.PrognozaTab;
-import app.tabs.RezervacijeTab;
+import cs202.turagencija.tabs.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,8 +21,8 @@ import javafx.stage.Stage;
 public class StartScene extends Application {
 
     VBox vb = new VBox();
-    TabPane tabPane = new TabPane(new PonudeTab(),
-            new HoteliTab(),
+    TabPane tabPane = new TabPane(
+            new AranzmaniTab(),
             new RezervacijeTab(),
             new PrognozaTab(),
             new ProfilTab());
@@ -45,9 +41,9 @@ public class StartScene extends Application {
         root.setStyle("-fx-background-color: lightgray;");
 
         //Icon, scene and size
-        Scene scene = new Scene(root, 750, 500);
-        primaryStage.setTitle("Cryptocurrency");
-        primaryStage.setResizable(false);
+        Scene scene = new Scene(root, 900, 600);
+        primaryStage.setTitle("Agencija");
+        primaryStage.setResizable(true);
         primaryStage.setScene(scene);
         primaryStage.show();
 

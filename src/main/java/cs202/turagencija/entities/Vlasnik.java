@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Vlasnik {
 
-    public Integer id;
-    public String jmbg;
-    public String ime;
-    public String prezime;
-    public String adresa;
-    public List<Agencija> agencijaList;
+    private Integer id;
+    private String jmbg;
+    private String ime;
+    private String prezime;
+    private String adresa;
+    private List<Agencija> agencijaList;
 
     public Vlasnik() {
     }
@@ -23,7 +23,7 @@ public class Vlasnik {
         this.agencijaList = agencijaList;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 

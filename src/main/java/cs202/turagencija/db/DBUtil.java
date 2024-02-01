@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cs202.turagencija.db;
 
 import java.sql.Connection;
@@ -12,24 +7,15 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author korisnik
- */
 public class DBUtil {
 
     public static Connection con = null;
-    private static String url = "jdbc:mysql://localhost:3306/";
-    private static String dbName = "turisticka_agencija";
-    private static String username = "root";
-    private static String password = "";
+    private static final String url = "jdbc:mysql://localhost:3306/";
+    private static final String dbName = "turisticka_agencija";
+    private static final String username = "root";
+    private static final String password = "";
 
-    /**
-     * Method for connecting to the base, checking if everything every table is
-     * created and if it isn't then it creates it
-     */
     public static void initDB() {
-
         try {
             con = DriverManager.getConnection(url, username, password);
             Statement stmt = con.createStatement();
@@ -61,11 +47,11 @@ public class DBUtil {
                     + "broj_mesta INT NOT NULL"
                     + ")");
 
-            // Create arazman table with foreign keys
-            stmt.execute("CREATE TABLE IF NOT EXISTS arazman("
-                    + "arazman_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+            // Create aranzman table with foreign keys
+            stmt.execute("CREATE TABLE IF NOT EXISTS aranzman("
+                    + "aranzman_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                     + "sifra_agencije VARCHAR(10) NOT NULL,"
-                    + "ara_arazman_id INT,"
+                    + "ara_aranzman_id INT,"
                     + "prevozno_sredstvo_id INT NOT NULL,"
                     + "odrediste VARCHAR(50) NOT NULL,"
                     + "mesto_polaska VARCHAR(50) NOT NULL,"
@@ -73,19 +59,19 @@ public class DBUtil {
                     + "REFERENCES agencija (sifra_agencije) ON DELETE RESTRICT ON UPDATE RESTRICT,"
                     + "CONSTRAINT FK_PREVOZI FOREIGN KEY (prevozno_sredstvo_id) "
                     + "REFERENCES prevozno_sredstvo (prevozno_sredstvo_id) ON DELETE RESTRICT ON UPDATE RESTRICT,"
-                    + "CONSTRAINT FK_ZAMENSKO_PUTOVANJE FOREIGN KEY (ara_arazman_id) "
-                    + "REFERENCES arazman (arazman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
+                    + "CONSTRAINT FK_ZAMENSKO_PUTOVANJE FOREIGN KEY (ara_aranzman_id) "
+                    + "REFERENCES aranzman (aranzman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
             // Create termin table with foreign key
             stmt.execute("CREATE TABLE IF NOT EXISTS termin("
                     + "termin_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
-                    + "arazman_id INT NOT NULL,"
+                    + "aranzman_id INT NOT NULL,"
                     + "datum_polaska DATE NOT NULL,"
                     + "datum_odlaska DATE NOT NULL,"
                     + "broj_slobodnih_mesta INT NOT NULL,"
-                    + "CONSTRAINT FK_ORGANIZOVANJE FOREIGN KEY (arazman_id) "
-                    + "REFERENCES arazman (arazman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
+                    + "CONSTRAINT FK_ORGANIZOVANJE FOREIGN KEY (aranzman_id) "
+                    + "REFERENCES aranzman (aranzman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
             // Create korisnik table with foreign key
@@ -103,13 +89,13 @@ public class DBUtil {
             // Create vodic table with foreign key
             stmt.execute("CREATE TABLE IF NOT EXISTS vodic("
                     + "vodic_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
-                    + "arazman_id INT NOT NULL,"
+                    + "aranzman_id INT NOT NULL,"
                     + "ime VARCHAR(20) NOT NULL,"
                     + "prezime VARCHAR(20) NOT NULL,"
                     + "starost INT,"
                     + "godine_rada INT,"
-                    + "CONSTRAINT FK_RELATIONSHIP_5 FOREIGN KEY (arazman_id) "
-                    + "REFERENCES arazman (arazman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
+                    + "CONSTRAINT FK_RELATIONSHIP_5 FOREIGN KEY (aranzman_id) "
+                    + "REFERENCES aranzman (aranzman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
         } catch (SQLException ex) {
@@ -117,21 +103,13 @@ public class DBUtil {
         }
     }
 
-    /**
-     * Method for opening connection
-     *
-     * @throws SQLException
-     */
     public static void openConnection() throws SQLException {
         con = DriverManager.getConnection(url + dbName, username, password);
     }
 
-    /**
-     * Method for closing connection
-     *
-     * @throws SQLException
-     */
     public static void closeConnection() throws SQLException {
-        con.close();
+        if (con != null) {
+            con.close();
+        }
     }
 }

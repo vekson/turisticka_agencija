@@ -2,12 +2,12 @@ package cs202.turagencija.entities;
 
 public class Korisnik {
 
-    public Integer id;
-    public String ime;
-    public String prezime;
-    public String adresa;
-    public Integer brojPasosa;
-    public Termin termin;
+    private Integer id;
+    private String ime;
+    private String prezime;
+    private String adresa;
+    private Integer brojPasosa;
+    private Termin termin;
 
     public Korisnik() {
     }

@@ -4,20 +4,20 @@ import java.util.*;
 
 public class Agencija {
 
-    public String sifra;
-    public String naziv;
-    public String adresa;
-    public List<Arazman> arazmanList;
-    public Vlasnik vlasnik;
+    private String sifra;
+    private String naziv;
+    private String adresa;
+    private List<Aranzman> aranzmanList;
+    private Vlasnik vlasnik;
 
     public Agencija() {
     }
 
-    public Agencija(String sifra, String naziv, String adresa, List<Arazman> arazmanList, Vlasnik vlasnik) {
+    public Agencija(String sifra, String naziv, String adresa, List<Aranzman> aranzmanList, Vlasnik vlasnik) {
         this.sifra = sifra;
         this.naziv = naziv;
         this.adresa = adresa;
-        this.arazmanList = arazmanList;
+        this.aranzmanList = aranzmanList;
         this.vlasnik = vlasnik;
     }
 
@@ -45,12 +45,12 @@ public class Agencija {
         this.adresa = adresa;
     }
 
-    public List<Arazman> getArazmanList() {
-        return arazmanList;
+    public List<Aranzman> getAranzmanList() {
+        return aranzmanList;
     }
 
-    public void setArazmanList(List<Arazman> arazmanList) {
-        this.arazmanList = arazmanList;
+    public void setAranzmanList(List<Aranzman> aranzmanList) {
+        this.aranzmanList = aranzmanList;
     }
 
     public Vlasnik getVlasnik() {
@@ -63,7 +63,7 @@ public class Agencija {
 
     @Override
     public String toString() {
-        return "Agencija{" + "sifra=" + sifra + ", naziv=" + naziv + ", adresa=" + adresa + ", arazmanList=" + arazmanList + ", vlasnik=" + vlasnik + '}';
+        return "Agencija{" + "sifra=" + sifra + ", naziv=" + naziv + ", adresa=" + adresa + ", aranzmanList=" + aranzmanList + ", vlasnik=" + vlasnik + '}';
     }
 
 }

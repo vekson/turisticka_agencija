@@ -5,22 +5,22 @@ import java.util.*;
 
 public class PrevoznoSredstvo {
 
-    public Integer id;
-    public PrevozTip tip;
-    public Integer brojMesta;
-    public List<Arazman> arazmanList;
+    private Integer id;
+    private PrevozTip tip;
+    private Integer brojMesta;
+    private List<Aranzman> arazmanList;
 
     public PrevoznoSredstvo() {
     }
 
-    public PrevoznoSredstvo(Integer id, PrevozTip tip, Integer brojMesta, List<Arazman> arazmanList) {
+    public PrevoznoSredstvo(Integer id, PrevozTip tip, Integer brojMesta, List<Aranzman> arazmanList) {
         this.id = id;
         this.tip = tip;
         this.brojMesta = brojMesta;
         this.arazmanList = arazmanList;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -44,11 +44,11 @@ public class PrevoznoSredstvo {
         this.brojMesta = brojMesta;
     }
 
-    public List<Arazman> getArazmanList() {
+    public List<Aranzman> getArazmanList() {
         return arazmanList;
     }
 
-    public void setArazmanList(List<Arazman> arazmanList) {
+    public void setArazmanList(List<Aranzman> arazmanList) {
         this.arazmanList = arazmanList;
     }
 
