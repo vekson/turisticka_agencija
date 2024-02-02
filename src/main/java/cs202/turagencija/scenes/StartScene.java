@@ -9,6 +9,7 @@ import cs202.turagencija.tabs.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -40,6 +41,10 @@ public class StartScene extends Application {
         BorderPane.setAlignment(vb, Pos.TOP_CENTER);
 
         root.setStyle("-fx-background-color: lightgray;");
+        
+        for (Tab tab : tabPane.getTabs()) {
+            tab.setClosable(false);
+        }
 
         //Icon, scene and size
         Scene scene = new Scene(root, 900, 600);

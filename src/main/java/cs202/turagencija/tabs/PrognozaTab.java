@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.jsoup.Jsoup;
@@ -58,15 +59,19 @@ public class PrognozaTab extends Tab {
 
     private void initializeUI() {
         VBox root = new VBox();
-        root.setAlignment(Pos.TOP_CENTER); // Aligns content to the top center
-        StackPane centerPane = new StackPane();
-        centerPane.getChildren().addAll(weatherLabel, coordinateLabel);
-        root.getChildren().addAll(cityComboBox, centerPane); // Adding components to the VBox
+        root.setAlignment(Pos.TOP_CENTER);
+
+        HBox labelsPane = new HBox(); // New HBox to hold labels
+        labelsPane.setAlignment(Pos.CENTER);
+        labelsPane.getChildren().addAll(coordinateLabel, weatherLabel); // Add labels side by side
+
+        root.getChildren().addAll(cityComboBox, labelsPane); // Add labelsPane instead of centerPane
         setContent(root);
 
         // Apply styles
         root.setStyle("-fx-padding: 10px;");
         cityComboBox.setStyle("-fx-pref-width: 200px;");
+        coordinateLabel.setText("Forecast: "); // Change label text to "Forecast"
         coordinateLabel.setStyle("-fx-font-weight: bold;");
         weatherLabel.setStyle("-fx-font-size: 14px;");
     }
@@ -97,10 +102,10 @@ public class PrognozaTab extends Tab {
                 weatherInfoBuilder.append(formatWeatherInfo(weatherInfo)).append("\n\n");
             }
 
+            setText("Prognoza: " + coordinates); // Update tab title with coordinates
             weatherLabel.setText(weatherInfoBuilder.toString());
         } catch (IOException e) {
-            e.printStackTrace();
-            weatherLabel.setText("Error fetching weather information.");
+            handleWeatherFetchingError(e);
         }
     }
 
@@ -117,5 +122,11 @@ public class PrognozaTab extends Tab {
         }
 
         return formattedWeatherInfo.toString();
+    }
+
+    private void handleWeatherFetchingError(IOException exception) {
+        // Log the error or display a user-friendly message
+        exception.printStackTrace();
+        weatherLabel.setText("Error fetching weather information.");
     }
 }

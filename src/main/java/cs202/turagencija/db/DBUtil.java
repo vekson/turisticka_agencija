@@ -30,7 +30,7 @@ public class DBUtil {
                     + "adresa VARCHAR(50)"
                     + ")");
 
-            // Create agencija table with foreign key
+           
             stmt.execute("CREATE TABLE IF NOT EXISTS agencija("
                     + "sifra_agencije VARCHAR(10) NOT NULL PRIMARY KEY,"
                     + "vlasnik_id INT NOT NULL,"
@@ -40,14 +40,12 @@ public class DBUtil {
                     + "REFERENCES vlasnik (vlasnik_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
-            // Create prevozno_sredstvo table
             stmt.execute("CREATE TABLE IF NOT EXISTS prevozno_sredstvo("
                     + "prevozno_sredstvo_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                     + "tip VARCHAR(30) NOT NULL,"
                     + "broj_mesta INT NOT NULL"
                     + ")");
 
-            // Create aranzman table with foreign keys
             stmt.execute("CREATE TABLE IF NOT EXISTS aranzman("
                     + "aranzman_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                     + "sifra_agencije VARCHAR(10) NOT NULL,"
@@ -63,7 +61,6 @@ public class DBUtil {
                     + "REFERENCES aranzman (aranzman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
-            // Create termin table with foreign key
             stmt.execute("CREATE TABLE IF NOT EXISTS termin("
                     + "termin_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                     + "aranzman_id INT NOT NULL,"
@@ -74,7 +71,6 @@ public class DBUtil {
                     + "REFERENCES aranzman (aranzman_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
-            // Create korisnik table with foreign key
             stmt.execute("CREATE TABLE IF NOT EXISTS korisnik("
                     + "korisnik_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                     + "termin_id INT NOT NULL,"
@@ -86,7 +82,6 @@ public class DBUtil {
                     + "REFERENCES termin (termin_id) ON DELETE RESTRICT ON UPDATE RESTRICT"
                     + ")");
 
-            // Create vodic table with foreign key
             stmt.execute("CREATE TABLE IF NOT EXISTS vodic("
                     + "vodic_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
                     + "aranzman_id INT NOT NULL,"
