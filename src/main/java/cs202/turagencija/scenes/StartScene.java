@@ -25,7 +25,7 @@ public class StartScene extends Application {
             new AranzmaniTab(),
             new RezervacijeTab(),
             new PrognozaTab(),
-            new ProfilTab());
+            new KorisnikTab());
     BorderPane root = new BorderPane();
 
     @Override

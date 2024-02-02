@@ -21,6 +21,14 @@ public class Korisnik {
         this.termin = termin;
     }
 
+    public Korisnik(String ime, String prezime, String adresa, int brojPasosa, Termin termin) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.adresa = adresa;
+        this.brojPasosa = brojPasosa;
+        this.termin = termin;
+    }
+
     public Integer getId() {
         return id;
     }

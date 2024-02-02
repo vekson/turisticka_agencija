@@ -104,4 +104,26 @@ public class AranzmanCRUD {
             ex.printStackTrace();
         }
     }
+
+    public static Aranzman getAranzmanById(int aranzmanId) {
+        Aranzman aranzman = null;
+        try {
+            DBUtil.openConnection();
+            PreparedStatement stmt = DBUtil.con.prepareStatement("SELECT * FROM ARANZMAN WHERE ARANZMAN_ID=?");
+            stmt.setInt(1, aranzmanId);
+            ResultSet set = stmt.executeQuery();
+            if (set.next()) {
+                aranzman = new Aranzman();
+                aranzman.setId(set.getInt("ARANZMAN_ID"));
+                aranzman.setAgencija(AgencijaCRUD.getAgencijaBySifraAgencije(set.getString("SIFRA_AGENCIJE")));
+                aranzman.setPrevoznoSredstvo(PrevoznoSredstvoCRUD.getPrevoznoSredstvoById(set.getInt("PREVOZNO_SREDSTVO_ID")));
+                aranzman.setOdrediste(set.getString("ODREDISTE"));
+                aranzman.setMestoPolaska(set.getString("MESTO_POLASKA"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return aranzman;
+    }
+
 }
