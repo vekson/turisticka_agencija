@@ -24,6 +24,13 @@ public class Termin {
         this.aranzman = aranzman;
     }
 
+    public Termin(Aranzman aranzman, LocalDate datumPolaska, LocalDate datumOdlaska, Integer slobodnaMesta) {
+        this.datumPolaska = datumPolaska;
+        this.datumOdlaska = datumOdlaska;
+        this.brojSlobodnihMesta = slobodnaMesta;
+        this.aranzman = aranzman;
+    }
+
     public Integer getId() {
         return id;
     }

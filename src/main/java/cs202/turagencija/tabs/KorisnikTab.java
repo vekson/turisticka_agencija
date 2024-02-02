@@ -115,28 +115,40 @@ public class KorisnikTab extends Tab {
             List<Korisnik> korisniciList = KorisnikCRUD.readAllKorisnici();
 
             for (Korisnik korisnik : korisniciList) {
-                VBox korisnikPane = new VBox(
-                        new Label("Ime: " + korisnik.getIme()),
-                        new Label("Prezime: " + korisnik.getPrezime()),
-                        new Label("Adresa: " + korisnik.getAdresa()),
-                        new Label("Broj pasoša: " + korisnik.getBrojPasosa()),
-                        new Label("Termin: "
-                                + korisnik.getTermin().getAranzman().getMestoPolaska() + "-"
-                                + korisnik.getTermin().getAranzman().getOdrediste()+ "-"
-                                + korisnik.getTermin().getDatumPolaska() + "-"
-                                + korisnik.getTermin().getDatumOdlaska())
-                );
-                korisnikPane.setStyle("-fx-background-color: #E8E8E8; -fx-padding: 10px; -fx-border-color: #CCCCCC; -fx-border-width: 1px; -fx-border-radius: 5px;");
-
-                korisnikPane.setOnMouseClicked(event -> {
-                    selectedKorisnik = korisnik;
-                    fillFields(selectedKorisnik);
-                });
+                VBox korisnikPane = createKorisnikPane(korisnik);
                 korisnici.getChildren().add(korisnikPane);
             }
         } catch (SQLException ex) {
             Logger.getLogger(KorisnikTab.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private VBox createKorisnikPane(Korisnik korisnik) {
+        VBox korisnikPane = new VBox(
+                new Label("Ime: " + korisnik.getIme()),
+                new Label("Prezime: " + korisnik.getPrezime()),
+                new Label("Adresa: " + korisnik.getAdresa()),
+                new Label("Broj pasoša: " + korisnik.getBrojPasosa()),
+                new Label("Termin: "
+                        + korisnik.getTermin().getAranzman().getMestoPolaska() + "-"
+                        + korisnik.getTermin().getAranzman().getOdrediste() + "-"
+                        + korisnik.getTermin().getDatumPolaska() + "-"
+                        + korisnik.getTermin().getDatumOdlaska())
+        );
+
+        Button deleteButton = new Button("Delete");
+        deleteButton.setOnAction(event -> deleteKorisnik(korisnik.getId()));
+
+        korisnikPane.getChildren().add(deleteButton);
+
+        korisnikPane.setStyle("-fx-background-color: #E8E8E8; -fx-padding: 10px; -fx-border-color: #CCCCCC; -fx-border-width: 1px; -fx-border-radius: 5px;");
+
+        return korisnikPane;
+    }
+
+    private void deleteKorisnik(Integer korisnikId) {
+        KorisnikCRUD.deleteKorisnik(korisnikId);
+        loadKorisnici(); // Refresh the UI after deletion
     }
 
     private void addKorisnik() {
@@ -178,13 +190,5 @@ public class KorisnikTab extends Tab {
             clearFields();
             selectedKorisnik = null;
         }
-    }
-
-    private void fillFields(Korisnik korisnik) {
-        imeField.setText(korisnik.getIme());
-        prezimeField.setText(korisnik.getPrezime());
-        adresaField.setText(korisnik.getAdresa());
-        brojPasosaField.setText(String.valueOf(korisnik.getBrojPasosa()));
-        terminComboBox.setValue(korisnik.getTermin());
     }
 }

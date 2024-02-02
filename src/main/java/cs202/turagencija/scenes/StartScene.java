@@ -23,9 +23,10 @@ public class StartScene extends Application {
     VBox vb = new VBox();
     TabPane tabPane = new TabPane(
             new AranzmaniTab(),
-            new RezervacijeTab(),
-            new PrognozaTab(),
-            new KorisnikTab());
+            new TerminTab(),
+            new KorisnikTab(),
+            new PrognozaTab()
+    );
     BorderPane root = new BorderPane();
 
     @Override
